@@ -345,7 +345,7 @@ class Train:
         transform_ts2np = ToNumpy()
 
         # dataset_test = Dataset(dir_data_test, data_type=self.data_type, transform=transform_test, sgm=(0, 25))
-        dataset_test = Dataset(dir_data_test, data_type=self.data_type, transform=transform_train, sgm=25, ratio=0.1, size_data=size_data, size_window=size_window)
+        dataset_test = Dataset(dir_data_test, data_type=self.data_type, transform=transform_test, sgm=25, ratio=0.1, size_data=size_data, size_window=size_window)
         loader_test = torch.utils.data.DataLoader(dataset_test, batch_size=batch_size, shuffle=False, num_workers=0)
 
         num_test = len(dataset_test)
