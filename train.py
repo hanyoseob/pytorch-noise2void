@@ -68,6 +68,14 @@ class Train:
                    '%s/model_epoch%04d.pth' % (dir_chck, epoch))
 
     def load(self, dir_chck, netG, optimG=[], epoch=[], mode='train'):
+
+        if not os.path.exists(dir_chck):
+            epoch = 0
+            if mode == 'train':
+                return netG, optimG, epoch
+            elif mode == 'test':
+                return netG, epoch
+
         if not epoch:
             ckpt = os.listdir(dir_chck)
             ckpt.sort()
