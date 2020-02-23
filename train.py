@@ -252,11 +252,12 @@ class Train:
 
                     input = data['input'].to(device)
                     label = data['label'].to(device)
+                    mask = data['mask'].to(device)
 
                     # forward netG
                     output = netG(input)
 
-                    loss_G = fn_REG(output, label)
+                    loss_G = fn_REG(output * mask, label * mask)
 
                     loss_G_val += [loss_G.item()]
 
@@ -376,10 +377,11 @@ class Train:
             for i, data in enumerate(loader_test, 1):
                 input = data['input'].to(device)
                 label = data['label'].to(device)
+                mask = data['mask'].to(device)
 
                 output = netG(input)
 
-                loss_G = fn_REG(output, label)
+                loss_G = fn_REG(output * mask, label * mask)
 
                 loss_G_test += [loss_G.item()]
 
