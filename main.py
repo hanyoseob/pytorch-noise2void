@@ -24,7 +24,7 @@ parser.add_argument('--norm', type=str, default='inorm', dest='norm')
 parser.add_argument('--dir_checkpoint', default='./checkpoints', dest='dir_checkpoint')
 parser.add_argument('--dir_log', default='./log', dest='dir_log')
 
-parser.add_argument('--name_data', type=str, default='bsr', dest='name_data')
+parser.add_argument('--name_data', type=str, default='bsd500', dest='name_data')
 parser.add_argument('--dir_data', default='../datasets', dest='dir_data')
 parser.add_argument('--dir_result', default='./results', dest='dir_result')
 
