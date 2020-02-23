@@ -258,7 +258,8 @@ class Train:
                     def should(freq):
                         return freq > 0 and (batch % freq == 0 or batch == num_batch_val)
 
-                    input = data['input'].to(device)
+                    # input = data['input'].to(device)
+                    input = data['label'].to(device)
                     label = data['label'].to(device)
                     mask = data['mask'].to(device)
 
@@ -383,7 +384,8 @@ class Train:
             loss_G_test = []
 
             for i, data in enumerate(loader_test, 1):
-                input = data['input'].to(device)
+                # input = data['input'].to(device)
+                input = data['label'].to(device)
                 label = data['label'].to(device)
                 mask = data['mask'].to(device)
 
