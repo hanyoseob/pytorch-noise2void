@@ -14,7 +14,7 @@ class Dataset(torch.utils.data.Dataset):
        stuff<number>_density.pt
     """
 
-    def __init__(self, data_dir, data_type='float32', transform=None, sgm=25, ratio=0.1, size_data=(256, 256, 3), size_window=(5, 5)):
+    def __init__(self, data_dir, data_type='float32', transform=None, sgm=25, ratio=0.9, size_data=(256, 256, 3), size_window=(5, 5)):
         self.data_dir = data_dir
         self.transform = transform
         self.data_type = data_type
@@ -93,14 +93,10 @@ class Dataset(torch.utils.data.Dataset):
         ratio = self.ratio
         size_window = self.size_window
         size_data = self.size_data
-        num_sample = int(size_data[0] * size_data[1] * ratio)
+        num_sample = int(size_data[0] * size_data[1] * (1 - ratio))
 
-        mask = np.zeros(size_data)
+        mask = np.ones(size_data)
         output = input
-
-        if ratio == 1:
-            mask[:] = 1
-            return output, mask
 
         for ich in range(size_data[2]):
             idy_msk = np.random.randint(0, size_data[0], num_sample)
@@ -118,8 +114,8 @@ class Dataset(torch.utils.data.Dataset):
             id_msk = (idy_msk, idx_msk, ich)
             id_msk_neigh = (idy_msk_neigh, idx_msk_neigh, ich)
 
-            mask[id_msk] = 1.0
             output[id_msk] = input[id_msk_neigh]
+            mask[id_msk] = 0.0
 
         return output, mask
 
