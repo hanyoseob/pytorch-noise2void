@@ -73,8 +73,6 @@ class Dataset(torch.utils.data.Dataset):
         if data.shape[0] > data.shape[1]:
             data = data.transpose((1, 0, 2))
 
-        sz = data.shape
-
         label = data + self.noise[index]
         input, mask = self.generate_mask(copy.deepcopy(label))
 
