@@ -69,7 +69,7 @@ class Train:
 
     def load(self, dir_chck, netG, optimG=[], epoch=[], mode='train'):
 
-        if not os.path.exists(dir_chck):
+        if not os.path.exists(dir_chck) or not os.listdir(dir_chck):
             epoch = 0
             if mode == 'train':
                 return netG, optimG, epoch
