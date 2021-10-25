@@ -117,7 +117,7 @@ class Train:
         nch_ker = self.nch_ker
 
         size_data = (self.ny_in, self.nx_in, self.nch_in)
-        size_window = tuple(self.size_window_x, self.size_window_y)
+        size_window = (self.size_window_x, self.size_window_y)
 
         norm = self.norm
         name_data = self.name_data
@@ -332,7 +332,7 @@ class Train:
         nch_ker = self.nch_ker
 
         size_data = (self.ny_in, self.nx_in, self.nch_in)
-        size_window = tuple(self.size_window_x, self.size_window_y)
+        size_window = (self.size_window_x, self.size_window_y)
 
 
         norm = self.norm
