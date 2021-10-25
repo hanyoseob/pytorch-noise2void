@@ -51,6 +51,8 @@ class Train:
         self.num_freq_disp = args.num_freq_disp
         self.num_freq_save = args.num_freq_save
 
+        self.size_window = args.size_window
+
         self.gpu_ids = args.gpu_ids
 
         if self.gpu_ids and torch.cuda.is_available():
@@ -114,7 +116,7 @@ class Train:
         nch_ker = self.nch_ker
 
         size_data = (self.ny_in, self.nx_in, self.nch_in)
-        size_window = (5, 5)
+        size_window = self.size_window
 
         norm = self.norm
         name_data = self.name_data
@@ -329,7 +331,7 @@ class Train:
         nch_ker = self.nch_ker
 
         size_data = (self.ny_in, self.nx_in, self.nch_in)
-        size_window = (5, 5)
+        size_window = self.size_window
 
 
         norm = self.norm

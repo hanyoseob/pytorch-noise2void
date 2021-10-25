@@ -66,6 +66,8 @@ parser.add_argument('--data_type', default='float32', dest='data_type')
 parser.add_argument('--num_freq_disp', type=int,  default=10, dest='num_freq_disp')
 parser.add_argument('--num_freq_save', type=int,  default=50, dest='num_freq_save')
 
+parser.add_argument('--size_window', type=tuple, default=(5, 5), dest='size_window')
+
 PARSER = Parser(parser)
 
 def main():
